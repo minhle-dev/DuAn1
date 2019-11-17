@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mCardView"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:padding="2dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="10">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/ivIcon"
+                android:layout_width="98dp"
+                android:layout_height="98dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="4dp"
+                android:padding="10dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/iconnam" />
+            <TextView
+                android:id="@+id/tvPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0987452155"
+                android:textColor="#555555"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="2dp"
+                android:layout_toRightOf="@+id/ivIcon"/>
+
+            <TextView
+                android:id="@+id/tvFullname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="le nam"
+                android:textColor="#555555"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="2dp"
+                android:layout_toRightOf="@+id/ivIcon"
+                android:layout_below="@+id/tvPhone"/>
+
+            <TextView
+                android:id="@+id/tvPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="2dp"
+                android:text="20/10"
+                android:textColor="#555555"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_toRightOf="@+id/ivIcon"
+                android:layout_below="@+id/tvFullname"/>
+            <TextView
+                android:id="@+id/tvRole"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="2dp"
+                android:text="20/10"
+                android:textColor="#67BF7F"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_toRightOf="@+id/ivIcon"
+                android:layout_below="@+id/tvPassword"/>
+            <ImageView
+                android:id="@+id/ivDelete"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:src="@drawable/ic_close"
+                android:layout_alignParentRight="true"
+                android:layout_margin="20dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
