@@ -1,5 +1,6 @@
 package com.example.milkteaapplication.View.Fragment;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
@@ -111,24 +112,34 @@ public class FragmentSanPham extends Fragment {
         spListDanhMuc.setAdapter(spinnerDanhMucAdapter);
         spinnerDanhMucAdapter.notifyDataSetChanged();
 
-        spListDanhMuc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
+//        spListDanhMuc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 //
-//                sanPhamDAO = new SanPhamDAO(getContext(), this);
-//                mSanPham = sanPhamDAO.readAllSanPhamOrderByDanhMuc(idDanhMuc);
+////
+////                sanPhamDAO = new SanPhamDAO(getContext(), this);
+////                mSanPham = sanPhamDAO.readAllSanPhamOrderByDanhMuc(idDanhMuc);
+////
+////                sanPhamAdapter.notifyItemInserted(mSanPham.size());
+////                sanPhamAdapter.notifyDataSetChanged();
 //
-//                sanPhamAdapter.notifyItemInserted(mSanPham.size());
-//                sanPhamAdapter.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
+////                int mPosition = spListDanhMuc.getSelectedItemPosition();
+////                DanhMucSanPham danhMucSanPham = mDanhMuc.get(mPosition);
+////                final String idDanhMuc = danhMucSanPham.getMaDanhMuc();
+////                mSanPham.clear();
+////                mSanPham = sanPhamDAO.readAllSanPhamOrderByDanhMuc(idDanhMuc);
+////                sanPhamAdapter.notifyItemInserted(mSanPham.size());
+////                sanPhamAdapter.notifyDataSetChanged();
+//
+//
+//
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
         return view;
     }
 
@@ -146,8 +157,8 @@ public class FragmentSanPham extends Fragment {
         mSanPham = new ArrayList<>();
 
         danhMucDao = new DanhMucDao(getContext());
-        sanPhamDAO = new SanPhamDAO(getContext(),this);
-        mSanPham = sanPhamDAO.getAllSanPham();
+        sanPhamDAO = new SanPhamDAO(getContext(), this);
+        mSanPham = sanPhamDAO.readAllSanPhamOrderByDanhMuc(idDanhMuc);
         storageReference = FirebaseStorage.getInstance().getReference("Uploads");
         //Gridlayout with 3 cols
         recyclerView_SanPham.setLayoutManager(new GridLayoutManager(getContext(), 3));
@@ -203,18 +214,21 @@ public class FragmentSanPham extends Fragment {
 
     }
 
-    //sua sp//
-    private void SuaSanPham() {
+    private void SuaSanPham(int position) {
         AlertDialog.Builder builder =
                 new AlertDialog.Builder(getLayoutInflater().getContext());
         final LayoutInflater inflater = getActivity().getLayoutInflater();
-        View v = inflater.inflate(R.layout.item_dialog_them_san_pham, null);
+        View v = inflater.inflate(R.layout.item_dialog_sua_san_pham, null);
         edtTenSanPham = v.findViewById(R.id.edtTenSanPham);
         spDanhMuc = v.findViewById(R.id.sp_danhmuc);
         edtGiaTienSanPham = v.findViewById(R.id.edt_giaSanPham);
+
         builder.setView(v);
 
         mDanhMuc = danhMucDao.readAllCategoryToSpinner(spDanhMuc);
+        final SanPham sanPham = mSanPham.get(position);
+        edtTenSanPham.setText(sanPham.getTenSanPham());
+        edtGiaTienSanPham.setText("" + sanPham.getGiaTienSanPham());
 
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -225,7 +239,7 @@ public class FragmentSanPham extends Fragment {
                 String txtCatTitle = mDanhMuc.get(pos).getTenDanhMuc();
                 String txtTenSP = edtTenSanPham.getText().toString().trim();
                 String txtGiaSP = edtGiaTienSanPham.getText().toString().trim();
-
+                String txtMaSP = sanPham.getMaSanPham();
 
                 if (TextUtils.isEmpty(txtTenSP) || TextUtils.isEmpty(txtGiaSP)) {
                     Toast.makeText(getContext(), "Không được để trống", Toast.LENGTH_SHORT).show();
@@ -234,6 +248,7 @@ public class FragmentSanPham extends Fragment {
                     sanPham.setTenSanPham(txtTenSP);
                     sanPham.setMaDanhMuc(txtCategory);
                     sanPham.setTenDanhMuc(txtCatTitle);
+                    sanPham.setMaSanPham(txtMaSP);
                     sanPham.setGiaTienSanPham(Long.parseLong(txtGiaSP));
 
                     sanPhamDAO.updateSanPham(sanPham);
@@ -252,6 +267,7 @@ public class FragmentSanPham extends Fragment {
 
 
     }
+
     private void buildAction() {
         sanPhamAdapter = new SanPhamAdapter(getContext(), mSanPham);
         recyclerView_SanPham.setAdapter(sanPhamAdapter);
@@ -275,7 +291,7 @@ public class FragmentSanPham extends Fragment {
                                 openImage(position);
                                 break;
                             case R.id.edit_sanpham:
-                                Toast.makeText(getContext(), "Sửa", Toast.LENGTH_SHORT).show();
+                                SuaSanPham(position);
                                 break;
                             case R.id.remove_sanpham:
                                 // khởi tạo AlertDialog từ đối tượng Builder. tham số truyền vào ở đây là context.
@@ -403,17 +419,17 @@ public class FragmentSanPham extends Fragment {
     }
 
 
-//    @Override
-//    public void onAttach(Activity activity) {
-//        myContext = (FragmentActivity) activity;
-//        super.onAttach(activity);
-//    }
-//
-//
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//    }
+    @Override
+    public void onAttach(Activity activity) {
+        myContext = (FragmentActivity) activity;
+        super.onAttach(activity);
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 
     public void updateRecyclerView() {
 

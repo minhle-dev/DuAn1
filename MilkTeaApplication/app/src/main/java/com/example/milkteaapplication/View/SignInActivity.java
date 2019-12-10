@@ -22,6 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+import es.dmoral.toasty.Toasty;
+
 public class SignInActivity extends AppCompatActivity {
     EditText edtPhone;
     EditText edtPassword;
@@ -62,7 +64,7 @@ public class SignInActivity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "Nhập vào password!", Toast.LENGTH_SHORT).show();
                                 return;
                             } else if (user.getPassword().equals(edtPassword.getText().toString())) {
-                                Toast.makeText(SignInActivity.this, "Đăng nhập thành công !", Toast.LENGTH_SHORT).show();
+                                Toasty.success(SignInActivity.this,"Đăng nhập thành công !!",Toasty.LENGTH_SHORT,true).show();
                                 Intent homeintent = new Intent(SignInActivity.this, HomeActivity.class);
                                 Common.currentUser = user;
                                 startActivity(homeintent);

@@ -26,6 +26,8 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.dmoral.toasty.Toasty;
+
 public class SignUpActivity extends AppCompatActivity {
     NonUI nonUI;
     MaterialEditText edtPhone, edtName, edtPassword;
@@ -66,7 +68,12 @@ public class SignUpActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         //check trung user
-                        if (dataSnapshot.child(edtPhone.getText().toString()).exists()) {
+                        if (TextUtils.isEmpty(edtPhone.getText().toString())) {
+                            mDialog.dismiss();
+                            Toasty.info(SignUpActivity.this, "Nhập vào số điện thoại!!", Toast.LENGTH_SHORT, true).show();
+                            return;
+                        }
+                        else if (dataSnapshot.child(edtPhone.getText().toString()).exists()) {
                             mDialog.dismiss();
                             Toast.makeText(SignUpActivity.this, "Số điện thoại đã được sử dụng !", Toast.LENGTH_SHORT).show();
                         } else {

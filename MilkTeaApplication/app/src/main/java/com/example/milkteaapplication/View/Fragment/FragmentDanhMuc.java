@@ -141,10 +141,10 @@ public class FragmentDanhMuc extends Fragment {
 
         //init view
         View itemView = LayoutInflater.from(getContext()).inflate(R.layout.item_dialog_sua_danh_muc, null);
-        edtMaDanhMuc = itemView.findViewById(R.id.edtMaDanhMuc);
+
         edtTenDanhMuc = itemView.findViewById(R.id.edtTenDanhMuc);
         //set tetx dialog sua
-        edtMaDanhMuc.setText(danhmuc.maDanhMuc);
+
         edtTenDanhMuc.setText(danhmuc.tenDanhMuc);
         //
         builder.setView(itemView);
@@ -158,7 +158,7 @@ public class FragmentDanhMuc extends Fragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 mDialog.dismiss();
-                String maDanhMuc = edtMaDanhMuc.getText().toString();
+                String maDanhMuc = danhmuc.getMaDanhMuc();
                 String tenDanhMuc = edtTenDanhMuc.getText().toString();
                 DanhMucSanPham danhMucSanPham = new DanhMucSanPham();
                 danhMucSanPham.setTenDanhMuc(tenDanhMuc);

@@ -14,7 +14,10 @@ import com.example.milkteaapplication.Model.SanPham;
 import com.example.milkteaapplication.R;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SanPhamHolder> {
 
@@ -52,8 +55,12 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SanPhamH
     @Override
     public void onBindViewHolder(@NonNull SanPhamHolder holder, int position) {
         final SanPham sanPham = mList.get(position);
+        DecimalFormat formatPrice = (DecimalFormat) NumberFormat.getInstance(Locale.US);
+        formatPrice.applyPattern("###,###,###");
+
 
         holder.tenSanPham.setText(sanPham.getTenSanPham());
+        holder.giaSanPham.setText(formatPrice.format(Integer.valueOf((int) sanPham.giaTienSanPham))+" vnđ");
         Picasso.get().load(sanPham.getThumbUrl()).error(R.drawable.tea).into(holder.thumbnail);
     }
 
@@ -65,7 +72,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SanPhamH
     }
 
     public class SanPhamHolder extends RecyclerView.ViewHolder {
-        TextView tenSanPham;
+        TextView tenSanPham, giaSanPham;
         ImageView thumbnail, option_img;
 
         public SanPhamHolder(@NonNull View itemView, final OnItemClickListener listener) {
@@ -73,7 +80,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SanPhamH
             tenSanPham = itemView.findViewById(R.id.tv_ten_sanpham);
             thumbnail = itemView.findViewById(R.id.iv_sanpham_img);
             option_img = itemView.findViewById(R.id.iv_option_item);
-
+            giaSanPham = itemView.findViewById(R.id.tv_giatien);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

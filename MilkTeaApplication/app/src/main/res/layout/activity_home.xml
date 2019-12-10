@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/tea_bg"
     tools:context=".View.HomeActivity">
 
 
 
     <LinearLayout
         android:orientation="vertical"
-
         android:weightSum="10"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -28,7 +27,7 @@
                 android:layout_centerInParent="true"
                 android:src="@drawable/logo"
                 android:textColor="@android:color/black"
-                android:textSize="34sp" />
+                />
 
         </RelativeLayout>
 
@@ -40,7 +39,7 @@
             android:columnOrderPreserved="false"
             android:layout_weight="8"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="500dp"
             android:padding="14dp"
             >
 
@@ -48,8 +47,8 @@
 
             <!-- Column 1 -->
             <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
                 android:layout_marginBottom="16dp"
@@ -57,6 +56,7 @@
                 android:layout_marginRight="16dp"
                 app:cardElevation="8dp"
                 app:cardCornerRadius="8dp"
+                app:cardBackgroundColor="@color/overlayBackground"
                 >
 
                 <LinearLayout
@@ -67,7 +67,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:src="@mipmap/ic_launcher"
+                        android:src="@drawable/ic_admin"
                         android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -77,9 +77,11 @@
                         android:layout_height="wrap_content"
                         android:text="ADMIN"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_gravity="center_horizontal"
+                        />
 
                 </LinearLayout>
 
@@ -87,8 +89,8 @@
 
             <!-- Column 2 -->
             <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
                 android:layout_marginBottom="16dp"
@@ -96,6 +98,7 @@
                 android:layout_marginRight="16dp"
                 app:cardElevation="8dp"
                 app:cardCornerRadius="8dp"
+                app:cardBackgroundColor="@color/overlayBackground"
                 >
 
                 <LinearLayout
@@ -106,7 +109,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:src="@mipmap/ic_launcher"
+                        android:src="@drawable/ic_datmon"
                         android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -114,11 +117,12 @@
                     <TextView
                         android:text="Đặt Món"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"/>
 
                 </LinearLayout>
 
@@ -129,8 +133,8 @@
 
             <!-- Column 1 -->
             <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
                 android:layout_marginBottom="16dp"
@@ -138,6 +142,7 @@
                 android:layout_marginRight="16dp"
                 app:cardElevation="8dp"
                 app:cardCornerRadius="8dp"
+                app:cardBackgroundColor="@color/overlayBackground"
                 >
 
                 <LinearLayout
@@ -148,15 +153,15 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:src="@mipmap/ic_launcher"
+                        android:src="@drawable/ic_bill"
                         android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
                     <TextView
-                        android:text="Hóa đơnCT"
+                        android:text="Hóa đơn"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -168,8 +173,8 @@
 
             <!-- Column 2 -->
             <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
                 android:layout_marginBottom="16dp"
@@ -177,6 +182,7 @@
                 android:layout_marginRight="16dp"
                 app:cardElevation="8dp"
                 app:cardCornerRadius="8dp"
+                app:cardBackgroundColor="@color/overlayBackground"
                 >
 
                 <LinearLayout
@@ -187,7 +193,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:src="@mipmap/ic_launcher"
+                        android:src="@drawable/ic_thongke"
                         android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -195,7 +201,7 @@
                     <TextView
                         android:text="Thống Kê"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -210,8 +216,8 @@
 
             <!-- Column 1 -->
             <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
                 android:layout_marginBottom="16dp"
@@ -219,6 +225,7 @@
                 android:layout_marginRight="16dp"
                 app:cardElevation="8dp"
                 app:cardCornerRadius="8dp"
+                app:cardBackgroundColor="@color/overlayBackground"
                 >
 
                 <LinearLayout
@@ -229,7 +236,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:src="@mipmap/ic_launcher"
+                        android:src="@drawable/ic_menu"
                         android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -237,7 +244,8 @@
                     <TextView
                         android:text="Menu"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
+                        android:layout_gravity="center_horizontal"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -249,8 +257,8 @@
 
             <!-- Column 2 -->
             <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
                 android:layout_marginBottom="16dp"
@@ -258,6 +266,7 @@
                 android:layout_marginRight="16dp"
                 app:cardElevation="8dp"
                 app:cardCornerRadius="8dp"
+                app:cardBackgroundColor="@color/overlayBackground"
                 >
 
                 <LinearLayout
@@ -268,7 +277,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:src="@mipmap/ic_launcher"
+                        android:src="@drawable/ic_logout"
                         android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -276,7 +285,7 @@
                     <TextView
                         android:text="Đăng xuất"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -286,233 +295,7 @@
 
             </androidx.cardview.widget.CardView>
 
-<!--            <androidx.cardview.widget.CardView-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="0dp"-->
-<!--                android:layout_columnWeight="1"-->
-<!--                android:layout_rowWeight="1"-->
-<!--                android:layout_marginBottom="16dp"-->
-<!--                android:layout_marginLeft="16dp"-->
-<!--                android:layout_marginRight="16dp"-->
-<!--                app:cardElevation="8dp"-->
-<!--                app:cardCornerRadius="8dp"-->
-<!--                >-->
 
-<!--                <LinearLayout-->
-<!--                    android:layout_gravity="center_horizontal|center_vertical"-->
-<!--                    android:layout_margin="16dp"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content">-->
-
-<!--                    <ImageView-->
-<!--                        android:src="@drawable/calendar"-->
-<!--                        android:layout_gravity="center_horizontal"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content" />-->
-
-<!--                    <TextView-->
-<!--                        android:text="Calendars"-->
-<!--                        android:textAlignment="center"-->
-<!--                        android:textColor="@android:color/black"-->
-<!--                        android:textSize="18sp"-->
-<!--                        android:textStyle="bold"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content" />-->
-
-<!--                </LinearLayout>-->
-
-<!--            </androidx.cardview.widget.CardView>-->
-
-<!--            <androidx.cardview.widget.CardView-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="0dp"-->
-<!--                android:layout_columnWeight="1"-->
-<!--                android:layout_rowWeight="1"-->
-<!--                android:layout_marginBottom="16dp"-->
-<!--                android:layout_marginLeft="16dp"-->
-<!--                android:layout_marginRight="16dp"-->
-<!--                app:cardElevation="8dp"-->
-<!--                app:cardCornerRadius="8dp"-->
-<!--                >-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_gravity="center_horizontal|center_vertical"-->
-<!--                    android:layout_margin="16dp"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content">-->
-
-<!--                    <ImageView-->
-<!--                        android:src="@drawable/calendar"-->
-<!--                        android:layout_gravity="center_horizontal"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content" />-->
-
-<!--                    <TextView-->
-<!--                        android:text="Calendars"-->
-<!--                        android:textAlignment="center"-->
-<!--                        android:textColor="@android:color/black"-->
-<!--                        android:textSize="18sp"-->
-<!--                        android:textStyle="bold"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content" />-->
-
-<!--                </LinearLayout>-->
-
-<!--            </androidx.cardview.widget.CardView>-->
-
-<!--            <androidx.cardview.widget.CardView-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="0dp"-->
-<!--                android:layout_columnWeight="1"-->
-<!--                android:layout_rowWeight="1"-->
-<!--                android:layout_marginBottom="16dp"-->
-<!--                android:layout_marginLeft="16dp"-->
-<!--                android:layout_marginRight="16dp"-->
-<!--                app:cardElevation="8dp"-->
-<!--                app:cardCornerRadius="8dp"-->
-<!--                >-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_gravity="center_horizontal|center_vertical"-->
-<!--                    android:layout_margin="16dp"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content">-->
-
-<!--                    <ImageView-->
-<!--                        android:src="@drawable/calendar"-->
-<!--                        android:layout_gravity="center_horizontal"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content" />-->
-
-<!--                    <TextView-->
-<!--                        android:text="Calendars"-->
-<!--                        android:textAlignment="center"-->
-<!--                        android:textColor="@android:color/black"-->
-<!--                        android:textSize="18sp"-->
-<!--                        android:textStyle="bold"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content" />-->
-
-<!--                </LinearLayout>-->
-
-<!--            </androidx.cardview.widget.CardView>-->
-
-<!--            <androidx.cardview.widget.CardView-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="0dp"-->
-<!--                android:layout_columnWeight="1"-->
-<!--                android:layout_rowWeight="1"-->
-<!--                android:layout_marginBottom="16dp"-->
-<!--                android:layout_marginLeft="16dp"-->
-<!--                android:layout_marginRight="16dp"-->
-<!--                app:cardElevation="8dp"-->
-<!--                app:cardCornerRadius="8dp"-->
-<!--                >-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_gravity="center_horizontal|center_vertical"-->
-<!--                    android:layout_margin="16dp"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content">-->
-
-<!--                    <ImageView-->
-<!--                        android:src="@drawable/calendar"-->
-<!--                        android:layout_gravity="center_horizontal"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content" />-->
-
-<!--                    <TextView-->
-<!--                        android:text="Calendars"-->
-<!--                        android:textAlignment="center"-->
-<!--                        android:textColor="@android:color/black"-->
-<!--                        android:textSize="18sp"-->
-<!--                        android:textStyle="bold"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content" />-->
-
-<!--                </LinearLayout>-->
-
-<!--            </androidx.cardview.widget.CardView>-->
-
-<!--            <androidx.cardview.widget.CardView-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="0dp"-->
-<!--                android:layout_columnWeight="1"-->
-<!--                android:layout_rowWeight="1"-->
-<!--                android:layout_marginBottom="16dp"-->
-<!--                android:layout_marginLeft="16dp"-->
-<!--                android:layout_marginRight="16dp"-->
-<!--                app:cardElevation="8dp"-->
-<!--                app:cardCornerRadius="8dp"-->
-<!--                >-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_gravity="center_horizontal|center_vertical"-->
-<!--                    android:layout_margin="16dp"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content">-->
-
-<!--                    <ImageView-->
-<!--                        android:src="@drawable/calendar"-->
-<!--                        android:layout_gravity="center_horizontal"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content" />-->
-
-<!--                    <TextView-->
-<!--                        android:text="Calendars"-->
-<!--                        android:textAlignment="center"-->
-<!--                        android:textColor="@android:color/black"-->
-<!--                        android:textSize="18sp"-->
-<!--                        android:textStyle="bold"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content" />-->
-
-<!--                </LinearLayout>-->
-
-<!--            </androidx.cardview.widget.CardView>-->
-
-<!--            <androidx.cardview.widget.CardView-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="0dp"-->
-<!--                android:layout_columnWeight="1"-->
-<!--                android:layout_rowWeight="1"-->
-<!--                android:layout_marginBottom="16dp"-->
-<!--                android:layout_marginLeft="16dp"-->
-<!--                android:layout_marginRight="16dp"-->
-<!--                app:cardElevation="8dp"-->
-<!--                app:cardCornerRadius="8dp"-->
-<!--                >-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_gravity="center_horizontal|center_vertical"-->
-<!--                    android:layout_margin="16dp"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content">-->
-
-<!--                    <ImageView-->
-<!--                        android:src="@drawable/calendar"-->
-<!--                        android:layout_gravity="center_horizontal"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content" />-->
-
-<!--                    <TextView-->
-<!--                        android:text="Calendars"-->
-<!--                        android:textAlignment="center"-->
-<!--                        android:textColor="@android:color/black"-->
-<!--                        android:textSize="18sp"-->
-<!--                        android:textStyle="bold"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content" />-->
-
-<!--                </LinearLayout>-->
-
-<!--            </androidx.cardview.widget.CardView>-->
 
         </GridLayout>
 

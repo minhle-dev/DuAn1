@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -120,7 +121,9 @@ public class DatMonActivity extends AppCompatActivity {
                 Toast.makeText(this, "Tính tiền", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.context_them_mon:
-                Toast.makeText(this, "Thêm món", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Thêm món", Toast.LENGTH_SHORT).show();
+                Intent intentThemMon = new Intent(DatMonActivity.this, ThemMonActivity.class);
+                startActivity(intentThemMon);
                 break;
             case R.id.context_xoa_ban:
                 BanAnDao banAnDao = new BanAnDao(DatMonActivity.this);

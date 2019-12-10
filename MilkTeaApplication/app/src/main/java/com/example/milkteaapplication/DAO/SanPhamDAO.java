@@ -11,6 +11,8 @@ import com.example.milkteaapplication.Model.HoaDonNhapHang;
 import com.example.milkteaapplication.Model.NonUI;
 import com.example.milkteaapplication.Model.SanPham;
 import com.example.milkteaapplication.View.Fragment.FragmentSanPham;
+import com.example.milkteaapplication.View.MainActivity;
+import com.example.milkteaapplication.View.ThemMonActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -84,6 +86,35 @@ public class SanPhamDAO {
         return list;
     }
 
+    public List<SanPham> getSanPham() {
+
+        final List<SanPham> list = new ArrayList<SanPham>();
+
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Sach object and use the values to update the UI
+                list.clear();
+                for (DataSnapshot data:dataSnapshot.getChildren()){
+                    SanPham s = data.getValue(SanPham.class);
+                    list.add(s);
+                }
+
+
+                ((ThemMonActivity)context).capnhatLV();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        reference.addValueEventListener(listener);
+
+        return list;
+    }
+
+
     //Read all san pham to recyclerview order by category on Spinner
     public List<SanPham> readAllSanPhamOrderByDanhMuc(final String idDanhMuc) {
         mSanPham = new ArrayList<>();
@@ -116,6 +147,37 @@ public class SanPhamDAO {
         return mSanPham;
     }
 
+//    public List<SanPham> readAllSanPhamSpDanhMuc(final String idDanhMuc) {
+//        mSanPham = new ArrayList<>();
+//
+//        ValueEventListener listener = new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//
+//                mSanPham.clear();
+//                for (DataSnapshot data : dataSnapshot.getChildren()) {
+//                    SanPham sanPham = new SanPham();
+//                    if (data.child("maDanhMuc").getValue(String.class).equalsIgnoreCase(sanPham.getMaDanhMuc())) {
+//                        sanPham = data.getValue(SanPham.class);
+//                    }
+//                    mSanPham.add(sanPham);
+//
+//                }
+//
+//                fr.updateRecyclerView();
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//                nonUI.toast("Không thể kết nối cơ sở dữ liệu!");
+//            }
+//
+//        };
+//
+//        reference.addValueEventListener(listener);
+//        return mSanPham;
+//    }
 
     public void insertSanPham(SanPham sanPham) {
         sanPhamId = reference.push().getKey();
@@ -197,7 +259,7 @@ public class SanPhamDAO {
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
-                                        nonUI.toast("update Thanh cong");
+                                        nonUI.toast("Sửa sản phẩm thành công!");
                                         Log.d("update", "update Thanh cong");
 
 
@@ -206,7 +268,7 @@ public class SanPhamDAO {
                                 .addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        nonUI.toast("update That bai");
+                                        nonUI.toast("Sửa thất bại!");
                                         Log.d("update", "update That bai");
                                     }
                                 });

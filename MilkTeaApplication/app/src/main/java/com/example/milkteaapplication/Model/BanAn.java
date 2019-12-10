@@ -16,4 +16,27 @@ public class BanAn {
         this.tongTien = tongTien;
     }
 
+    public String getTenBan() {
+        return tenBan;
+    }
+
+    public void setTenBan(String tenBan) {
+        this.tenBan = tenBan;
+    }
+
+    public String getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(String trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    public String getTongTien() {
+        return tongTien;
+    }
+
+    public void setTongTien(String tongTien) {
+        this.tongTien = tongTien;
+    }
 }
