@@ -47,7 +47,7 @@ public class DatMonAdapter extends RecyclerView.Adapter<DatMonAdapter.ThemMonHol
     public static List<DatMon> datMonList = new ArrayList<>();
     private OnItemClickListener mListener;
     private long price;
-    String Table, TableId;
+    String Table;
     FragmentChonMon fragmentChonMon;
 
     public interface OnItemClickListener {
@@ -230,9 +230,6 @@ public class DatMonAdapter extends RecyclerView.Adapter<DatMonAdapter.ThemMonHol
 
     private void addOrdered(final int i, final String amount, final Dialog dialog) {
 
-        String date = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());
-        String time = new SimpleDateFormat("kk:mm", Locale.getDefault()).format(new Date());
-
         final String tenMon = mList.get(i).tenSanPham;
         final String tongTien = String.valueOf((Integer.valueOf(amount) * price));
         final String tenBan = Common.TABLE;
@@ -246,8 +243,6 @@ public class DatMonAdapter extends RecyclerView.Adapter<DatMonAdapter.ThemMonHol
         datMon.setTenMon(tenMon);
         datMon.setGiaTien(String.valueOf(price));
         datMon.setSoLuong(amount);
-        datMon.setDate(date);
-        datMon.setTime(time);
         datMon.setTenBan(tenBan);
         datMon.setTongTien(tongTien);
 

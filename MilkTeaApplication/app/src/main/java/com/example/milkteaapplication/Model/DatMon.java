@@ -1,17 +1,16 @@
 package com.example.milkteaapplication.Model;
 
 public class DatMon {
-    private String id, tenMon, soLuong, date, time, giaTien, tongTien, tenBan;
+    private String id, tenMon, soLuong,  giaTien, tongTien, tenBan;
 
     public DatMon() {
     }
 
-    public DatMon(String id, String tenMon, String soLuong, String date, String time, String giaTien, String tongTien, String tenBan) {
+    public DatMon(String id, String tenMon, String soLuong, String giaTien, String tongTien, String tenBan) {
         this.id = id;
         this.tenMon = tenMon;
         this.soLuong = soLuong;
-        this.date = date;
-        this.time = time;
+
         this.giaTien = giaTien;
         this.tongTien = tongTien;
         this.tenBan = tenBan;
@@ -39,22 +38,6 @@ public class DatMon {
 
     public void setSoLuong(String soLuong) {
         this.soLuong = soLuong;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
     }
 
     public String getGiaTien() {
