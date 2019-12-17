@@ -29,6 +29,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.milkteaapplication.Adapter.SanPhamAdapter;
 import com.example.milkteaapplication.Adapter.SpinnerDanhMucAdapter;
+import com.example.milkteaapplication.Common.Common;
 import com.example.milkteaapplication.DAO.AddSanPhamListener;
 import com.example.milkteaapplication.DAO.DanhMucDao;
 import com.example.milkteaapplication.DAO.SanPhamDAO;
@@ -132,7 +133,12 @@ public class FragmentSanPham extends Fragment implements AddSanPhamListener {
         fabSanPham.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ThemSanPham();
+                if (Common.currentUser.getRole().equals("admin")) {
+                    ThemSanPham();
+                } else {
+                    Toast.makeText(getContext(), "Bạn không có quyền thêm sản phẩm!", Toast.LENGTH_SHORT).show();
+                    view.setVisibility(View.INVISIBLE);
+                }
             }
         });
         return view;
@@ -157,13 +163,27 @@ public class FragmentSanPham extends Fragment implements AddSanPhamListener {
         }
         switch (item.getItemId()) {
             case R.id.add_pic:
-                openImage(position);
+                if (Common.currentUser.getRole().equals("admin")) {
+                    openImage(position);
+                } else {
+                    Toast.makeText(getContext(), "Bạn không có quyền!", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.edit_sp:
-                SuaSanPham(position);
+                if (Common.currentUser.getRole().equals("admin")) {
+                    SuaSanPham(position);
+                } else {
+                    Toast.makeText(getContext(), "Bạn không có quyền!", Toast.LENGTH_SHORT).show();
+                }
+
                 break;
             case R.id.del_sp:
-                DeleteSp(mSanPham.get(sanPhamAdapter.getPosition()));
+                if (Common.currentUser.getRole().equals("admin")) {
+                    DeleteSp(mSanPham.get(sanPhamAdapter.getPosition()));
+                } else {
+                    Toast.makeText(getContext(), "Bạn không có quyền!", Toast.LENGTH_SHORT).show();
+                }
+
                 break;
 
         }
@@ -415,11 +435,11 @@ public class FragmentSanPham extends Fragment implements AddSanPhamListener {
 
     @Override
     public void getSanPham(SanPham sanPham) {
-        if(mSanPham != null){
+        if (mSanPham != null) {
 
             mSanPham.add(sanPham);
         }
-        if(sanPhamAdapter != null){
+        if (sanPhamAdapter != null) {
             sanPhamAdapter.setListSanPham(mSanPham);
         }
     }

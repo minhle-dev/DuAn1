@@ -9,11 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.milkteaapplication.Common.Common;
 import com.example.milkteaapplication.DAO.DanhMucDao;
 import com.example.milkteaapplication.View.Fragment.FragmentDanhMuc;
 import com.example.milkteaapplication.Model.DanhMucSanPham;
@@ -59,29 +61,33 @@ public class DanhMucSanPhamAdapter extends RecyclerView.Adapter<DanhMucSanPhamAd
         holder.ivDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // khởi tạo AlertDialog từ đối tượng Builder. tham số truyền vào ở đây là context.
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+               if (Common.currentUser.getRole().equals("admin")){
+                   // khởi tạo AlertDialog từ đối tượng Builder. tham số truyền vào ở đây là context.
+                   AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
-                // set Message là phương thức thiết lập câu thông báo
-                builder.setMessage("Bạn có muốn xóa danh mục "+danhMucSanPham.getTenDanhMuc()+" ?"
-                        +"            Tất cả các món trong danh mục sẽ bị xóa.")
-                        // positiveButton là nút thuận : đặt là OK
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                DanhMucDao danhMucDao = new DanhMucDao(context, fr);
-                                danhMucDao.deleteDanhMuc(arrDanhMucSp.get(position));
-                                arrDanhMucSp.remove(position);
-                                notifyDataSetChanged();
-                            }
-                        })
-                        // ngược lại negative là nút nghịch : đặt là cancel
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // User cancelled the dialog
-                            }
-                        });
-                // tạo dialog và hiển thị
-                builder.create().show();
+                   // set Message là phương thức thiết lập câu thông báo
+                   builder.setMessage("Bạn có muốn xóa danh mục "+danhMucSanPham.getTenDanhMuc()+" ?"
+                           +"            Tất cả các món trong danh mục sẽ bị xóa.")
+                           // positiveButton là nút thuận : đặt là OK
+                           .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                               public void onClick(DialogInterface dialog, int id) {
+                                   DanhMucDao danhMucDao = new DanhMucDao(context, fr);
+                                   danhMucDao.deleteDanhMuc(arrDanhMucSp.get(position));
+                                   arrDanhMucSp.remove(position);
+                                   notifyDataSetChanged();
+                               }
+                           })
+                           // ngược lại negative là nút nghịch : đặt là cancel
+                           .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                               public void onClick(DialogInterface dialog, int id) {
+                                   // User cancelled the dialog
+                               }
+                           });
+                   // tạo dialog và hiển thị
+                   builder.create().show();
+               }else {
+                   Toast.makeText(context, "Bạn không có quyền xóa!", Toast.LENGTH_SHORT).show();
+               }
 
 
             }

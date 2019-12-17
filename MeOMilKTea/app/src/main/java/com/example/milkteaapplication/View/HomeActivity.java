@@ -54,7 +54,7 @@ public class HomeActivity extends AppCompatActivity {
                     } else if (finalI == 3 && role.equals("admin") || finalI == 3 && role.equals("1")) {
                         Intent intentThongKe = new Intent(HomeActivity.this, ThongKeActivity.class);
                         startActivity(intentThongKe);
-                    } else if (finalI == 4 && role.equals("admin")) {
+                    } else if (finalI == 4 ) {
                         Intent intentMenu = new Intent(HomeActivity.this, MenuActivity.class);
                         startActivity(intentMenu);
                     } else if (finalI == 5 && role.equals("2") || finalI == 5 && role.equals("admin")) {

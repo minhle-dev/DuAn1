@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.milkteaapplication.Adapter.DanhMucSanPhamAdapter;
 import com.example.milkteaapplication.Adapter.HoaDonNhapHangAdapter;
+import com.example.milkteaapplication.Common.Common;
 import com.example.milkteaapplication.DAO.DanhMucDao;
 import com.example.milkteaapplication.DAO.HoaDonNhapDAO;
 import com.example.milkteaapplication.Model.DanhMucSanPham;
@@ -79,11 +81,15 @@ public class FragmentDanhMuc extends Fragment {
         fabDanhMucSp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ThemDanhMuc();
+                if (Common.currentUser.getRole().equals("admin")) {
+                    ThemDanhMuc();
+                }else {
+                    Toast.makeText(getContext(), "Bạn không có quyền thêm danh mục!", Toast.LENGTH_SHORT).show();
+                    view.setVisibility(View.INVISIBLE);
+                }
+
             }
         });
-
-
 
 
         return view;
@@ -187,13 +193,17 @@ public class FragmentDanhMuc extends Fragment {
         switch (item.getItemId()) {
 
             case R.id.context_edit_danh_muc:
-                SuaDanhMuc(position);
+                if (Common.currentUser.getRole().equals("admin")) {
+                    ThemDanhMuc();
+                }else {
+                    SuaDanhMuc(position);
+                    Toast.makeText(getContext(), "Bạn không có quyền sửa danh mục!", Toast.LENGTH_SHORT).show();
+                }
+
                 break;
         }
         return super.onContextItemSelected(item);
     }
-
-
 
 
     @Override
