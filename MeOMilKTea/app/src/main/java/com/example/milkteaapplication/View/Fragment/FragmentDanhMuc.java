@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -83,7 +84,7 @@ public class FragmentDanhMuc extends Fragment {
             public void onClick(View view) {
                 if (Common.currentUser.getRole().equals("admin")) {
                     ThemDanhMuc();
-                }else {
+                } else {
                     Toast.makeText(getContext(), "Bạn không có quyền thêm danh mục!", Toast.LENGTH_SHORT).show();
                     view.setVisibility(View.INVISIBLE);
                 }
@@ -106,7 +107,7 @@ public class FragmentDanhMuc extends Fragment {
 
         //init view
         View itemView = LayoutInflater.from(getContext()).inflate(R.layout.item_dialog_them_danh_muc, null);
-        //edtMaDanhMuc = itemView.findViewById(R.id.edtMaDanhMuc);
+
         edtTenDanhMuc = itemView.findViewById(R.id.edtTenDanhMuc);
         //set
         builder.setView(itemView);
@@ -122,11 +123,14 @@ public class FragmentDanhMuc extends Fragment {
                 mDialog.dismiss();
 
                 String tenDanhMuc = edtTenDanhMuc.getText().toString();
+                if (TextUtils.isEmpty(tenDanhMuc)) {
+                    Toast.makeText(getContext(), "Nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                } else {
 
-
-                DanhMucSanPham danhMucSanPham = new DanhMucSanPham();
-                danhMucSanPham.setTenDanhMuc(tenDanhMuc);
-                danhMucDao.insertDanhMucSP(danhMucSanPham);
+                    DanhMucSanPham danhMucSanPham = new DanhMucSanPham();
+                    danhMucSanPham.setTenDanhMuc(tenDanhMuc);
+                    danhMucDao.insertDanhMucSP(danhMucSanPham);
+                }
             }
         });
         builder.setView(itemView);
@@ -166,11 +170,15 @@ public class FragmentDanhMuc extends Fragment {
                 mDialog.dismiss();
                 String maDanhMuc = danhmuc.getMaDanhMuc();
                 String tenDanhMuc = edtTenDanhMuc.getText().toString();
-                DanhMucSanPham danhMucSanPham = new DanhMucSanPham();
-                danhMucSanPham.setTenDanhMuc(tenDanhMuc);
-                danhMucSanPham.setMaDanhMuc(maDanhMuc);
+                if (TextUtils.isEmpty(tenDanhMuc)) {
+                    Toast.makeText(getContext(), "Nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                } else {
+                    DanhMucSanPham danhMucSanPham = new DanhMucSanPham();
+                    danhMucSanPham.setTenDanhMuc(tenDanhMuc);
+                    danhMucSanPham.setMaDanhMuc(maDanhMuc);
 
-                danhMucDao.updateDanhMuc(danhMucSanPham);
+                    danhMucDao.updateDanhMuc(danhMucSanPham);
+                }
             }
         });
         builder.setView(itemView);
@@ -194,9 +202,8 @@ public class FragmentDanhMuc extends Fragment {
 
             case R.id.context_edit_danh_muc:
                 if (Common.currentUser.getRole().equals("admin")) {
-                    ThemDanhMuc();
-                }else {
                     SuaDanhMuc(position);
+                } else {
                     Toast.makeText(getContext(), "Bạn không có quyền sửa danh mục!", Toast.LENGTH_SHORT).show();
                 }
 

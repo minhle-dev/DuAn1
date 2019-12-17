@@ -166,11 +166,15 @@ public class BanAnActivity extends AppCompatActivity {
                 mDialog.dismiss();
                 String tenBan = edtTenBan.getText().toString();
                 String trangThai = String.valueOf(spTrangThai.getSelectedItemPosition());
-
+                if (tenBan.equals("")){
+                    Toast.makeText(BanAnActivity.this, "Không được để trống", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 BanAn banAn = new BanAn();
                 banAn.setTenBan(tenBan);
                 banAn.setTrangThai(trangThai);
                 banAn.setHoanThanh("");
+
                 banAnDao.insertBan(banAn);
                 finish();
             }

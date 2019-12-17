@@ -124,6 +124,7 @@ public class FragmentQuanLyTaiKhoan extends Fragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
+                mDialog.dismiss();
             }
         });
         builder.setPositiveButton("Thêm", new DialogInterface.OnClickListener() {
@@ -136,6 +137,24 @@ public class FragmentQuanLyTaiKhoan extends Fragment {
                         if (dataSnapshot.child(edtPhone.getText().toString()).exists()) {
                             mDialog.dismiss();
                             Toast.makeText(getContext(), "Số điện thoại đã được sử dụng !", Toast.LENGTH_SHORT).show();
+                        } else if (TextUtils.isEmpty(edtPhone.getText().toString())) {
+                            Toast.makeText(getContext(), "Số điện thoại không được để trống !", Toast.LENGTH_SHORT).show();
+                            return;
+                        } else if (edtPhone.getText().toString().length() < 9) {
+                            Toast.makeText(getContext(), "Số điện thoại ngắn!", Toast.LENGTH_SHORT).show();
+                            return;
+                        } else if (TextUtils.isEmpty(edtPhone.getText().toString())) {
+                            Toast.makeText(getContext(), "Số điện thoại không được để trống !", Toast.LENGTH_SHORT).show();
+                            return;
+                        } else if (TextUtils.isEmpty(edtName.getText().toString())) {
+                            Toast.makeText(getContext(), "Không được để trống tên!", Toast.LENGTH_SHORT).show();
+                            return;
+                        } else if (TextUtils.isEmpty(edtPassword.getText().toString())) {
+                            Toast.makeText(getContext(), "Password không được để trống !", Toast.LENGTH_SHORT).show();
+                            return;
+                        } else if (edtPhone.getText().toString().length() < 5) {
+                            Toast.makeText(getContext(), "Số điện thoại quá ngắn !", Toast.LENGTH_SHORT).show();
+                            return;
                         } else {
                             mDialog.dismiss();
 
@@ -197,6 +216,7 @@ public class FragmentQuanLyTaiKhoan extends Fragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 mDialog.dismiss();
+                dialogInterface.dismiss();
             }
         });
         builder.setPositiveButton("Sửa", new DialogInterface.OnClickListener() {
@@ -205,21 +225,26 @@ public class FragmentQuanLyTaiKhoan extends Fragment {
                 mDialog.dismiss();
                 String role = String.valueOf(spRole.getSelectedItemPosition());
                 if (TextUtils.isEmpty(edtPhone.getText().toString())) {
-                    Toast.makeText(getContext(), "Nhập vào Số điện thoại!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Số điện thoại không được để trống !", Toast.LENGTH_SHORT).show();
+                    return;
+                } else if (edtPhone.getText().toString().length() < 9) {
+                    Toast.makeText(getContext(), "Số điện thoại ngắn!", Toast.LENGTH_SHORT).show();
+                    return;
+                } else if (TextUtils.isEmpty(edtPhone.getText().toString())) {
+                    Toast.makeText(getContext(), "Số điện thoại không được để trống !", Toast.LENGTH_SHORT).show();
                     return;
                 } else if (TextUtils.isEmpty(edtName.getText().toString())) {
-                    Toast.makeText(getContext(), "Nhập vào họ tên!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Không được để trống tên!", Toast.LENGTH_SHORT).show();
                     return;
                 } else if (TextUtils.isEmpty(edtPassword.getText().toString())) {
-                    Toast.makeText(getContext(), "Nhập vào password!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Password không được để trống !", Toast.LENGTH_SHORT).show();
+                } else if (edtPhone.getText().toString().length() < 5) {
+                    Toast.makeText(getContext(), "Số điện thoại quá ngắn !", Toast.LENGTH_SHORT).show();
                     return;
-                } else if (edtPassword.getText().toString().length() < 6) {
-                    Toast.makeText(getContext(), "Password too short, enter minimum 6 characters!", Toast.LENGTH_SHORT).show();
-                    return;
+                }else {
+                    User user = new User(edtPhone.getText().toString(), edtName.getText().toString(), edtPassword.getText().toString(), role);
+                    userDAO.updateUser(user);
                 }
-
-                User user = new User(edtPhone.getText().toString(), edtName.getText().toString(), edtPassword.getText().toString(), role);
-                userDAO.updateUser(user);
 
             }
 
@@ -248,7 +273,6 @@ public class FragmentQuanLyTaiKhoan extends Fragment {
         }
         return super.onContextItemSelected(item);
     }
-
 
 
     @Override
