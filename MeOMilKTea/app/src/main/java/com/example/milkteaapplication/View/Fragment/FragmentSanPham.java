@@ -107,10 +107,10 @@ public class FragmentSanPham extends Fragment {
                 ThemSanPham();
             }
         });
-        mDanhMuc = danhMucDao.readAllCategoryToSpinner(spListDanhMuc);
-        spinnerDanhMucAdapter = new SpinnerDanhMucAdapter(getContext(), mDanhMuc);
-        spListDanhMuc.setAdapter(spinnerDanhMucAdapter);
-        spinnerDanhMucAdapter.notifyDataSetChanged();
+//        mDanhMuc = danhMucDao.readAllCategoryToSpinner(spListDanhMuc);
+//        spinnerDanhMucAdapter = new SpinnerDanhMucAdapter(getContext(), mDanhMuc);
+//        spListDanhMuc.setAdapter(spinnerDanhMucAdapter);
+//        spinnerDanhMucAdapter.notifyDataSetChanged();
 
         return view;
     }

@@ -35,7 +35,7 @@ import static android.content.ContentValues.TAG;
 
 public class BanAnActivity extends AppCompatActivity {
     Toolbar toolbar;
-    EditText edtTenBan, edtTongTien;
+    EditText edtTenBan;
     BanAnDao banAnDao;
     BanAnAdapter banAnAdapter;
     RecyclerView recyclerView_datBan;

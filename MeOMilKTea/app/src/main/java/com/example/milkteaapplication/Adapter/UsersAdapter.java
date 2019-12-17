@@ -8,10 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.milkteaapplication.Common.Common;
 import com.example.milkteaapplication.DAO.UserDAO;
 import com.example.milkteaapplication.View.Fragment.FragmentQuanLyTaiKhoan;
 import com.example.milkteaapplication.Model.User;
@@ -54,15 +56,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
-        holder.ivDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                UserDAO userDAO = new UserDAO(context, fr);
-                userDAO.deleteUser(arrUser.get(position));
-                arrUser.remove(position);
-                notifyDataSetChanged();
-            }
-        });
+
         final User user = arrUser.get(position);
         if (user != null) {
             //set len list
@@ -82,6 +76,19 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> 
 
 
         }
+        holder.ivDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (holder.tvRole.getText().equals("Admin")){
+                    Toast.makeText(context, "Không thể xóa admin!", Toast.LENGTH_SHORT).show();
+                }else {
+                    UserDAO userDAO = new UserDAO(context, fr);
+                    userDAO.deleteUser(arrUser.get(position));
+                    arrUser.remove(position);
+                    notifyDataSetChanged();
+                }
+            }
+        });
 
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override

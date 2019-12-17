@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/edtTenSanPham"
+        android:textColor="@color/mau_den"
         android:hint="Nhập tên sản phẩm"
         />
 
@@ -25,16 +26,11 @@
         android:id="@+id/edt_giaSanPham"
         android:ems="10"
         android:hint="Nhập giá tiền"
+        android:textColor="@color/mau_den"
         android:inputType="number"
         />
 
-<!--    <EditText-->
-<!--        android:id="@+id/edt_quantity"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:hint="Số lượng"-->
-<!--        android:inputType="number" />-->
+
 
 
 
