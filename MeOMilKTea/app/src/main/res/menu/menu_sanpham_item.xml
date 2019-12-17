@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/add_thumbnail"
+        android:title="Thêm ảnh"/>
+
+    <item android:id="@+id/edit_sanpham"
+        android:title="Sửa"/>
+    <item android:id="@+id/remove_sanpham"
+        android:title="Xóa"/>
+</menu>
