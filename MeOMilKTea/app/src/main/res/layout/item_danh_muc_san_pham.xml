@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mCardView"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:padding="2dp"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+       >
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/ivIcon"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+
+                android:scaleType="centerCrop"
+                android:src="@drawable/icetea" />
+            <TextView
+                android:id="@+id/tvMaDanhMuc"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="05"
+                android:textColor="#555555"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="2dp"
+                android:layout_toRightOf="@+id/ivIcon"/>
+
+            <TextView
+                android:id="@+id/tvTenDanhMuc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="nuoc ngot"
+                android:textColor="@color/xanhnhe"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="30dp"
+                android:layout_toRightOf="@+id/ivIcon"
+                android:layout_below="@+id/tvMaDanhMuc"/>
+
+            <ImageView
+                android:id="@+id/ivDelete"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_close"
+                android:layout_alignParentRight="true"
+                android:layout_margin="5dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="120dp"
+    android:layout_height="115dp"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="4dp"
+    android:clickable="true"
+    android:foreground="?android:selectableItemBackground"
+    >
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       android:layout_margin="5dp"
+       >
+       <TextView
+           android:id="@+id/tvTenBan"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="ten ban"
+           android:textColor="@color/mau_den"/>
+       <TextView
+           android:id="@+id/tvMaHD"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="ma hdon"
+           android:textSize="12sp"
+           android:maxLines="1"
+           android:visibility="gone"
+           />
+       <TextView
+           android:id="@+id/tvUsername"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="admin"
+           android:textColor="@color/mau_den"/>
+       <TextView
+           android:id="@+id/tvDate"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="22/12/2020"
+           android:textColor="@color/mau_den"/>
+       <TextView
+           android:id="@+id/tvTime"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="9:10"
+           android:textColor="@color/mau_den"/>
+
+       <TextView
+           android:id="@+id/tvThanhTien"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="150,000"
+           android:textColor="@color/mau_den"/>
+   </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
